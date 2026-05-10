@@ -13,12 +13,12 @@ app.use(express.json());
 
 // ── Rutas ─────────────────────────────────────────────────────────────────────
 app.use('/auth',          require('./src/routes/auth.routes'));
-app.use('/tags',          require('./src/routes/tags.routes'));
-app.use('/publicaciones', require('./src/routes/publicaciones.routes'));
-app.use('/sync',          require('./src/routes/sync.routes'));
-app.use('/admin',         require('./src/routes/admin.routes'));
-app.use('/dispositivos',  require('./src/routes/dispositivos.routes'));
-app.use('/interacciones', require('./src/routes/interacciones.routes'));
+//app.use('/tags',          require('./src/routes/tags.routes'));
+//app.use('/publicaciones', require('./src/routes/publicaciones.routes'));
+//app.use('/sync',          require('./src/routes/sync.routes'));
+//app.use('/admin',         require('./src/routes/admin.routes'));
+//app.use('/dispositivos',  require('./src/routes/dispositivos.routes'));
+//app.use('/interacciones', require('./src/routes/interacciones.routes'));
 
 // ── Health check ──────────────────────────────────────────────────────────────
 app.get('/health', async (req, res) => {
