@@ -13,7 +13,7 @@ app.use(express.json());
 
 // ── Rutas ─────────────────────────────────────────────────────────────────────
 app.use('/auth',          require('./src/routes/auth.routes'));
-//app.use('/tags',          require('./src/routes/tags.routes'));
+app.use('/tags',          require('./src/routes/tags.routes'));
 //app.use('/publicaciones', require('./src/routes/publicaciones.routes'));
 //app.use('/sync',          require('./src/routes/sync.routes'));
 //app.use('/admin',         require('./src/routes/admin.routes'));
