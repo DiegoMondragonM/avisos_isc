@@ -25,5 +25,4 @@ INSERT INTO tags (nombre, slug) VALUES
   ('Frontend',                    'frontend'),
   ('Machine Learning',            'machine-learning'),
   ('General',                     'general')
-  
 ON CONFLICT (slug) DO NOTHING;

@@ -63,6 +63,7 @@ CREATE TABLE IF NOT EXISTS publicaciones (
     fecha_inscripcion_inicio TIMESTAMP,
     fecha_inscripcion_fin TIMESTAMP,
     estado VARCHAR(20) NOT NULL DEFAULT 'borrador',
+    deleted_at TIMESTAMP,
     hash_origen VARCHAR(255) NOT NULL UNIQUE,
     autor_id INT,
     created_at TIMESTAMP NOT NULL DEFAULT NOW(),
@@ -71,7 +72,7 @@ CREATE TABLE IF NOT EXISTS publicaciones (
         FOREIGN KEY (autor_id) REFERENCES usuarios(id) ON DELETE SET NULL,
     CONSTRAINT chk_publicaciones_fuente CHECK (fuente IN ('mooc', 'manual')),
     CONSTRAINT chk_publicaciones_tipo CHECK (tipo IN ('curso', 'concurso', 'conferencia', 'taller', 'beca', 'otro')),
-    CONSTRAINT chk_publicaciones_estado CHECK (estado IN ('borrador', 'publicada', 'vencida')),
+    CONSTRAINT chk_publicaciones_estado CHECK (estado IN ('borrador', 'publicada', 'vencida', 'eliminada')),
     CONSTRAINT chk_publicaciones_fechas_evento CHECK (
         fecha_inicio IS NULL OR fecha_fin IS NULL OR fecha_inicio <= fecha_fin
     ),
