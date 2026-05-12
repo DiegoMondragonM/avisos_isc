@@ -9,7 +9,6 @@ const {
 } = require('../controllers/admin.controller');
 const { getMetricas } = require('../controllers/interacciones.controller');
 const { authMiddleware, soloAdmin } = require('../middlewares/auth.middleware');
-const { validarCrearPublicacion } = require('../middlewares/validate.middleware');
 
 // Todas las rutas de admin requieren JWT válido + rol admin
 router.use(authMiddleware, soloAdmin);
@@ -18,7 +17,7 @@ router.use(authMiddleware, soloAdmin);
 router.get('/publicaciones', listarTodas);
 
 // POST   /admin/publicaciones               → crear manual (entra como borrador)
-router.post('/publicaciones', validarCrearPublicacion, crearPublicacion);
+router.post('/publicaciones', crearPublicacion);
 
 // PUT    /admin/publicaciones/:id           → editar
 router.put('/publicaciones/:id', editarPublicacion);

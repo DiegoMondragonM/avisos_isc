@@ -8,10 +8,10 @@ async function getPublicaciones(req, res) {
     tipo,
     fuente,
     tag,
-    estado  = 'publicada', // por defecto solo las publicadas
     page    = 1,
     limit   = 20,
   } = req.query;
+  const estado = 'publicada'; // ruta pública: nunca expone borradores, vencidas o eliminadas
 
   const pageNumber = parseInt(page, 10);
   const limitNumber = parseInt(limit, 10);

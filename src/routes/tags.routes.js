@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const { getTags, setIntereses, getIntereses } = require('../controllers/tags.controller');
 const { authMiddleware } = require('../middlewares/auth.middleware');
+const { validarIntereses } = require('../middlewares/validate.middleware');
 
 // GET  /tags                →  público (la app necesita el catálogo sin login)
 router.get('/', getTags);
@@ -9,6 +10,6 @@ router.get('/', getTags);
 router.get('/mis-intereses', authMiddleware, getIntereses);
 
 // PUT  /tags/mis-intereses  →  protegido
-router.put('/mis-intereses', authMiddleware, setIntereses);
+router.put('/mis-intereses', authMiddleware, validarIntereses, setIntereses);
 
 module.exports = router;
