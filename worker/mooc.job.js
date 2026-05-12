@@ -66,6 +66,13 @@ async function ejecutarSync() {
       if (result.rowCount > 0) {
         log.cursos_nuevos++;
         console.log(`  ✅ Nuevo: ${curso.titulo}`);
+
+        const { notificarATodos } = require('../src/services/push.service');
+        notificarATodos({
+          titulo: 'Nuevo curso disponible',
+          cuerpo: curso.titulo,
+          data: { publicacion_id: String(result.rows[0]?.id || ''), tipo: 'nuevo_curso' },
+        }).catch(err => console.error('  Push error (no crítico):', err.message));
       } else {
         log.cursos_omitidos++;
       }

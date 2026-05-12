@@ -251,8 +251,13 @@ async function publicar(req, res) {
       });
     }
 
-    // TODO Paso 8: disparar push notifications aquí
-    // await pushService.notificarNuevaPublicacion(rows[0]);
+    const { notificarPorIntereses } = require('../services/push.service');
+    notificarPorIntereses(rows[0].id, {
+      titulo: `Nueva publicación: ${rows[0].titulo}`,
+      cuerpo: rows[0].descripcion
+        ? rows[0].descripcion.substring(0, 100)
+        : 'Nueva publicación disponible',
+    }).catch(err => console.error('Push error (no crítico):', err.message));
 
     return res.json({
       message:     'Publicación publicada exitosamente',
